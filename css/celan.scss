@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+@mixin toolbar-bg($pos, $hoverPos){
+  background-position: 0 $pos;
+
+  &:hover {
+    background-position: 0 $hoverPos;
+  }
+}
+
+$toolbar-width: 52px;
+
+body {
+  background-color: #eee;
+}
+
+.toolbar {
+  position: fixed;
+  left: 50%;
+  bottom: 5px;
+  margin-left: -$toolbar-width / 2;
+}
+
+.toolbar-layer, .toolbar-item {
+  background-image: url(../img/toolbar.png);
+  background-repeat: no-repeat;
+}
+
+.toolbar-item {
+  position: relative;
+  display: block;
+  width: $toolbar-width;
+  height: $toolbar-width;
+  margin-top: 1px;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    .toolbar-layer {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      transform: scale(1);
+    }
+  }
+}
+
+.toolbar-item-weixin {
+  @include toolbar-bg(-798px, -860px);
+
+  .toolbar-layer {
+    height: 212px;
+    background-position: 0 0;
+  }
+}
+
+.toolbar-item-feedback {
+  @include toolbar-bg(-426px, -488px);
+}
+
+.toolbar-item-app {
+  @include toolbar-bg(-550px, -612px);
+
+  .toolbar-layer {
+    height: 194px;
+    background-position: 0 -222px;
+  }
+}
+
+.toolbar-item-top {
+  @include toolbar-bg(-674px, -736px);
+}
+
+.toolbar-layer {
+  position: absolute;
+  right: $toolbar-width - 6;
+  bottom: -10px;
+  display: block;
+  width: 172px;
+  opacity: 1;
+  filter: alpha(opacity=0);
+  transform: scale(0);
+  transform-origin: 95% 95%;
+  transition: all .5s ease-in-out;
+}

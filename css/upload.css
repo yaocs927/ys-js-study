@@ -1,0 +1,45 @@
+.uploadBox {
+  position: relative;
+  /*width: 100px;*/
+  height: 100px;
+}
+
+.uploadStyle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-color: #eee;
+}
+
+.uploadStyle:after {
+  display: block;
+  content: "Up Load";
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  font-size: 16px;
+  color: #bbb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.uploadBtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+}
+
+.uploadBox span {
+  display: inline-block;
+  margin-left: 110px;
+  margin-top: 80px;
+  font-size: 14px;
+  color: #bbb;
+  font-family: Arial, "Microsoft Yahei", Helvetica, sans-serif;
+}
