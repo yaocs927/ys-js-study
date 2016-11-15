@@ -6,9 +6,12 @@ var btn = document.getElementById('btn');
 //   alert(123);
 // }
 
-btn.addEventListener('click', function () {
-  console.log(event.currentTarget === this);
+window.addEventListener('mousewheel', function (event) {
+  console.log(event.wheelDelta)
 }, false)
+
+
+
 
 
 // 跨浏览器的事件监听 兼容
