@@ -2,6 +2,14 @@ function showPic(pic) {
   var source = pic.getAttribute('href');
   var Img = document.getElementById('Img');
   Img.setAttribute('src', source);
+  var text = pic.getAttribute('title');
+  var dText = document.getElementById('description');
+  dText.firstChild.nodeValue = text;
+}
+
+function countBodyChildren() {
+  var body_element = document.getElementsByTagName('body')[0];
+  
 }
 
 var imgList = document.getElementById('imgList');
