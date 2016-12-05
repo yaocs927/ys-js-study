@@ -40,7 +40,7 @@ function insertAfter(newElement, targetElement) {
   if (parent.lastChild == targetElement) {
     parent.appendChild(newElement);
   } else {
-    parent.insertBefore(newElement, targetElement.nextSibling)
+    parent.insertBefore(newElement, targetElement.nextSibling);
   }
 }
 

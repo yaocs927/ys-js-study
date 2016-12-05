@@ -1,3 +1,51 @@
+// 设置表格隔行不同背景色方法
+function stripeTables(classname) {
+  var tables = document.getElementsByTagName('table');
+  var odd, rows;
+  for (var i = 0; i < tables.length; i++) {
+    odd = false;
+    var element = tables[i];
+    rows = element.getElementsByTagName('tr');
+    for (var j = 0; j < rows.length; j++) {
+      console.log(odd);
+      var elem = rows[j];
+      if (odd == true) {
+        addClass(elem, classname)
+        // elem.style.backgroundColor = 'red';
+        odd = false;
+      } else {
+        odd = true;
+      }
+    }
+  }
+}
+
+// 设置表格鼠标指向行改变样式
+function highLightRows() {
+  var rows = document.getElementsByTagName('tr');
+  for (var i = 0; i < rows.length; i++) {
+    var element = rows[i];
+    element.onmouseover = function () {
+      this.style.fontWeight = 'bold';
+    }
+    element.onmouseout = function () {
+      this.style.fontWeight = 'normal';
+    }
+  }
+}
+
+// 添加 class 名
+function addClass(element, value) {
+  if (!element.className) {
+    element.className = value;
+  } else {
+    var oldClassName = element.className;
+    var newClassName = oldClassName + ' ';
+    newClassName += value;
+    element.className = newClassName;
+  }
+}
+
 function displayAbbreviations() {
   // 取得所有 abbr
   var abbrList = document.getElementsByTagName('abbr');
@@ -36,47 +84,8 @@ function displayAbbreviations() {
   document.body.appendChild(dlist);
 }
 
-function displayCitations() {
-  var quotes = document.getElementsByTagName('blockquote');
-  for (var i = 0; i < quotes.length; i++) {
-    var current_quote = quotes[i];
-    if (!current_quote.getAttribute('cite')) continue;
-    var url = current_quote.getAttribute('cite');
-    var quoteChildren = current_quote.getElementsByTagName('*');
-    var elem = quoteChildren[quoteChildren.length - 1];
-    console.log(elem);
-    var link = document.createElement('a');
-    link.setAttribute('href', url);
-    var link_text = document.createTextNode('source');
-    link.appendChild(link_text);
-    var superscript = document.createElement('sup');
-    superscript.appendChild(link);
-    elem.appendChild(superscript);
-    // insertAfter(superscript, elem);
-  }
-}
-
-function insertAfter(newElement, targetElement) {
-  var parent = targetElement.parentNode;
-  if (parent.lastChild == targetElement) {
-    parent.appendChild(newElement);
-  } else {
-    parent.insertBefore(newElement, targetElement.nextSibling);
-  }
-}
-
-// 获取相邻的下一个元素节点
-function getNextElement(node) {
-  if (node.nodeType == 1) {
-    return node;
-  }
-  if (node.nextSibling) {
-    return getNextElement(node.nextSibling);
-  }
-  return null;
-}
-
 window.onload = function () {
+  stripeTables('odd');
   displayAbbreviations();
-  displayCitations();
+  highLightRows();
 }

@@ -4,7 +4,7 @@ function getNewContent() {
     request.open('GET', 'ajax.text', true);
     request.onreadystatechange = function () {
       if (request.readyState == 4) {
-        alert('123');
+        // alert('123');
         var para = document.createElement('p');
         var text = document.createTextNode(request.responseText);
         para.appendChild(text);
@@ -15,7 +15,7 @@ function getNewContent() {
   } else {
     alert('your browser doesn\'t support XMLHttpRequest');
   }
-  alert('466');
+  // alert('466');
 }
 
 window.onload = getNewContent;
