@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>lightBox-demo</title>
+  <link rel="stylesheet" href="css/reset.css" type="text/css">
+  <link rel="stylesheet" href="css/lightBox.css" type="text/css">
+</head>
+
+<body>
+  <!-- 遮罩层 -->
+  <div id="lb-mask"></div>
+  <!-- 图片展示区 -->
+  <div id="lb-popup">
+    <div class="lb-pic-view">
+      <span class="lb-switch-btn lb-prev-btn lb-prev-btn-show"></span>
+      <img class="lb-image" src="img/2-2.jpg" alt="" width="100%">
+      <span class="lb-switch-btn lb-next-btn lb-next-btn-show"></span>
+    </div>
+    <div class="lb-pic-caption">
+      <div class="lb-caption-box">
+        <p class="lb-caption-title">当前标题</p>
+        <span class="lb-caption-index">当前索引 1 of 4</span>
+      </div>
+      <span class="lb-close-btn"></span>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/lightBox.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      var lightBox = new LightBox();
+    })
+  </script>
+</body>
+
+</html>

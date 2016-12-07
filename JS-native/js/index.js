@@ -120,3 +120,73 @@ var w = e.toString(); // 2,13,15,20
 // 18 //
 // 返回数组对象的原始值 { 不改变原数组 }
 // arr.vauleOf() --一般 JS 后台调用--
+
+
+/*
+=============
+原生对象方法
+=============
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+// arr.concat() 
+// arr.join()
+// arr.toString()
+// arr.indexOf()
+// arr.lastIndexOf()
+// arr.pop()
+// arr.push()
+// arr.reverse()
+// arr.shift()
+// arr.unshift()
+// arr.every()
+// arr.filter()
+// arr.map()
+// arr.some()
+// arr.slice()
+// arr.splice()
+// arr.sort()
+// arr.valueOf()
+
+window.onload = function () {
+  var ses = getElementsByClassName('asd');
+  var elem = document.getElementsByTagName('div');
+  for (var i = 0; i < elem.length; i++){
+    // elem[i].onclick = function () {
+    //   var text = this.lastChild.nodeValue;
+    //   console.log(text);
+    // }
+    (function (w) { 
+      elem[w].onclick = function () {
+        console.log(w);
+      }
+    })(i)
+  }
+}
+
+
+function getElementsByClassName(className) {
+  if (!document.getElementsByClassName) {
+    var elems = [];
+    var dom = document.getElementsByTagName('*');
+    for (i = 0; i < dom.length; i++){
+      if (dom[i].className === className) {
+        elems.push(dom[i]);
+      }
+    }
+  } else {
+    var elems = document.getElementsByClassName(className);
+  }
+  return elems;
+}
