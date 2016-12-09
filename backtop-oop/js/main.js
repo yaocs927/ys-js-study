@@ -2,10 +2,17 @@
 requirejs.config({
   paths: {
     jquery: 'jquery.min',
-    scrollTo: 'sub'
+    scrollTo: 'scrollto',
+    backTop: 'backtop'
   }
 })
 
-requirejs(['jquery', 'scrollTo'], function ($, scrollTo) {
-  var scrollTop = new scrollTo.ScrollTo();
+requirejs(['jquery', 'backTop'], function ($, backTop) {
+  // new backTop.BackTop($('#backTop'), {
+  //   mode: 'go'
+  // });
+
+  $('#backTop').backtop({
+    mode: 'go'
+  });
 });
