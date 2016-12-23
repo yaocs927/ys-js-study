@@ -16,6 +16,7 @@ var d = a.concat(b, c); // ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc'
 // 检测数组元素的每个元素是否都符合条件 { 不改变原数组，不检测空数组 }
 // arr.every(func(curVal,index,arr), thisValue) --返回布尔值--
 var e = [20, 15, 2, 13];
+
 function checkResult(cur) { // cur 为数组当前项
   return cur >= 10 // 检测是否都大于等于 10
 }
@@ -106,11 +107,11 @@ var u = e.some(checkResult); // true
 // 对数组元素进行排序 { 改变原数组 }
 // arr.sort(func) --返回数组--
 var v = e.sort(
-  function (a, b) {
-    return a - b;
-  }
-) // [2, 13, 15, 20]
-// console.log(e); // [2, 13, 15, 20]
+    function (a, b) {
+      return a - b;
+    }
+  ) // [2, 13, 15, 20]
+  // console.log(e); // [2, 13, 15, 20]
 
 // 17 //
 // 把数组转换为字符串
@@ -128,46 +129,30 @@ var w = e.toString(); // 2,13,15,20
 =============
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-// arr.concat() 
-// arr.join()
-// arr.toString()
-// arr.indexOf()
-// arr.lastIndexOf()
-// arr.pop()
-// arr.push()
-// arr.reverse()
-// arr.shift()
-// arr.unshift()
-// arr.every()
-// arr.filter()
-// arr.map()
-// arr.some()
-// arr.slice()
-// arr.splice()
-// arr.sort()
+// arr.concat();
+// arr.push();
+// arr.pop();
+// arr.unshift();
+// arr.shift();
+// arr.indexOf();
+// arr.lastIndexOf();
+// arr.slice();
+// arr.splice();
+// arr.map();
+// arr.every();
+// arr.filter();
+// arr.some(); ////////////////
+// arr.join();
+// arr.toString();
+// arr.sort(); //////////////
+// arr.reverse(); ///////////
 // arr.valueOf()
 
 window.onload = function () {
   var ses = getElementsByClassName('asd');
   var elem = document.getElementsByTagName('div');
-  for (var i = 0; i < elem.length; i++){
-    // elem[i].onclick = function () {
-    //   var text = this.lastChild.nodeValue;
-    //   console.log(text);
-    // }
-    (function (w) { 
+  for (var i = 0; i < elem.length; i++) {
+    (function (w) {
       elem[w].onclick = function () {
         console.log(w);
       }
@@ -180,7 +165,7 @@ function getElementsByClassName(className) {
   if (!document.getElementsByClassName) {
     var elems = [];
     var dom = document.getElementsByTagName('*');
-    for (i = 0; i < dom.length; i++){
+    for (i = 0; i < dom.length; i++) {
       if (dom[i].className === className) {
         elems.push(dom[i]);
       }
@@ -189,4 +174,69 @@ function getElementsByClassName(className) {
     var elems = document.getElementsByClassName(className);
   }
   return elems;
+}
+
+
+
+// ==========================================
+// nodeType DOM 节点类型
+// ==========================================
+节点类型 | 数值 | 字符
+Element(元素节点) | 1 | ELEMENT_NODE
+Attr(属性节点) | 2 | ATTRIBUTE_NODE
+Text(文本节点) | 3 | TEXT_NODE
+Comment(注释节点) | 8 | COMMENT_NODE
+Document(文档节点) | 9 | DOCUMENT_NODE
+DocumentType(文档类型节点) | 10 | DOCUMENT_TYPE_NODE
+DocumentFragment(文档片段节点) | 11 | DOCUMENT_FRAGMENT_NODE
+
+// =========================================
+nodeType => 节点类型
+nodeName => 节点名称
+nodeValue => 节点值
+
+// =========================================
+// DOM ready
+function domReady(fn) {
+  // 现代浏览器
+  if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', fn, false)
+  } else {
+    IEContentLoaded(fn);
+  }
+
+  // IE 模拟 DOMContentLoaded
+  function IEContentLoaded(fn) {
+    var d = window.document;
+    var done = false;
+    // 只执行一次用户的回调函数 init()
+    var init = function () {
+      if (!done) {
+        done = true;
+        fn();
+      }
+    }
+
+    (function () {
+      try {
+        // DOM 树未创建完之前调用 doScroll 会抛出错误
+        d.documentElement.doScroll('left');
+      } catch (e) {
+        // 延迟再试一次
+        setTimeout(arguments.callee, 50);
+        return;
+      }
+      // 没有错误后，执行 init()
+      init();
+    })();
+
+    // 监听 document 的加载状态
+    d.onreadystatechange = function () {
+      // 如果用户是在 domReady 之后绑定的函数，就立即执行
+      if (d.readyState === 'complete') {
+        d.onreadystatechange = null;
+        init();
+      }
+    }
+  }
 }
