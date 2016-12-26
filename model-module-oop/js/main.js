@@ -1,34 +1,27 @@
 // main.js
 require.config({
   paths: {
-    jquery: './jquery.min'
+    jquery: 'jquery.min',
+    PopUp: 'PopUp'
   }
 })
 
-require(['jquery', 'window'], function ($, w) {
-  $('#btn').on('click', function () {
-    var win = new w.Window();
-    win.alert({
-      title: '消息',
-      content: '新的弹窗',
-      text4ConfirmBtn: 'OK',
-      // handler4ConfirmBtn: function () {
-      //   alert('1确定按钮!')
-      // },
-      // handler4CloseBtn: function () {
-      //   alert('1关闭按钮!')
-      // },
-      width: 400,
-      height: 250,
-      y: 60,
+require(['jquery', 'PopUp'], function ($, P) {
+  $('#alertBtn').on('click', function () {
+    new P.PopUp({
+      mode: 'alert',
+      width: 300,
+      height: 150,
+      contentText: 'Hello!',
+      text4confirmBtn: 'OK',
       hasCloseBtn: true,
-      // skinClassName: 'window_a'
+      hasSkinClassName: 'popup_skinA',
+      handler4confirmBtn: function () {
+        alert('点击了确定按钮');
+      },
+      handler4closeBtn: function () {
+        alert('点击了右上角关闭按钮')
+      }
     });
-    win.on('confirm', function () {
-      alert('2确定按钮!')
-    })
-    // win.on('confirm', function () {
-    //   alert('3确定按钮!')
-    // })
-  });
-});
+  })
+})

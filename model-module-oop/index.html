@@ -4,13 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="css/model/base.css">
-  <link rel="stylesheet" type="text/css" href="css/model/window.css">
+  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <link rel="stylesheet" type="text/css" href="css/popup.css">
 </head>
 
 <body>
-  <input type="button" name="按钮" value="弹窗" id="btn">
-  <script src="js/model/require.js" data-main="js/model/main"></script>
+  <div class="warp">
+    <input type="button" class="btn" value="alert" id="alertBtn">
+    <input type="button" class="btn" value="confirm" id="confirmBtn">
+    <input type="button" class="btn" value="prompt" id="promptBtn">
+  </div>
+
+  <script src="js/require.js" data-main="js/main"></script>
 </body>
 
 </html>
