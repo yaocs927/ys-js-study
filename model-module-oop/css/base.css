@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+/*html,body {
+  height: 100%;
+}*/
+
 .warp {
   width: 1000px;
   margin: 40px auto;
